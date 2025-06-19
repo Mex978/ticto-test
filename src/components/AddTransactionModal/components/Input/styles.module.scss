@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.field {
+  background-color: var(--input-background-color);
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--border-radius-sm);
+  padding: 1.1rem 1rem;
+  font-size: var(--font-size-sm);
+  color: var(--input-text-placeholder-color);
+  outline: none;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: var(--primary-color-light);
+  }
+
+  &::placeholder {
+    color: var(--input-text-placeholder-color);
+    opacity: 0.45;
+  }
+}

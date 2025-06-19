@@ -2,20 +2,68 @@
 @import "./breakpoints.scss";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: var(--background-color);
-    color: #333;
-    font-family: "Roboto", "Poppins", sans-serif;
+  background-color: var(--background-color);
+  color: #333;
+  font-family: "Roboto", sans-serif;
 }
 
 button {
-    &:hover {
-        opacity: 0.7;
-        cursor: pointer;
-    }
+  border: none;
+
+  &:hover:not(:disabled) {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+}
+
+button:disabled {
+  background-color: var(--text-caption-color);
+  cursor: not-allowed;
+}
+
+.modal-overlay {
+  display: flex;
+
+  background-color: var(--modal-overlay-color);
+
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.modal-content {
+  background-color: var(--modal-background-color);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 1rem;
+  padding: 2rem;
+  border-radius: var(--border-radius-sm);
+
+  font-family: var(--font-family-roboto);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

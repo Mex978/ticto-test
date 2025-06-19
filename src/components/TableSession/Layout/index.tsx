@@ -1,3 +1,5 @@
+"use client";
+
 import { formatCurrency } from "@/helpers/functions/formatCurrency";
 import { ITableSessionLayout } from "../data";
 
@@ -57,7 +59,7 @@ const TableItemMobile: React.FC<Transaction> = (item) => {
       </div>
 
       <div>
-        <button>
+        <button aria-label="Excluir transação">
           <FiTrash size={16} color="#DB3766" />
         </button>
         <span>{formatDate(item.createdAt)}</span>
@@ -75,7 +77,7 @@ const TableItemDesktop: React.FC<Transaction> = (item) => {
       </strong>
       <p>{item.category}</p>
       <p>{formatDate(item.createdAt)}</p>
-      <button className={styles.delete}>
+      <button className={styles.delete} aria-label="Excluir transação">
         <FiTrash size={16} color="#DB3766" />
       </button>
     </li>

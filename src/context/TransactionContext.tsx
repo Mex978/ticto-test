@@ -6,18 +6,23 @@ import { Transaction } from "@/types";
 
 type TransactionsContextType = {
   transactions: Transaction[];
+  showAddTransactionModal: boolean;
   addTransaction: (transaction: Transaction) => void;
   removeTransaction: (id: string) => void;
+  setShowAddTransactionModal: (show: boolean) => void;
 };
 
 const TransactionsContext = createContext<TransactionsContextType>({
   transactions: [],
+  showAddTransactionModal: false,
   addTransaction: () => {},
   removeTransaction: () => {},
+  setShowAddTransactionModal: () => {},
 });
 
 export const TransactionsProvider = ({ children }: { children: ReactNode }) => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [showAddTransactionModal, setShowAddTransactionModal] = useState(false);
 
   const addTransaction = (transaction: Transaction) =>
     setTransactions((prev) => [...prev, transaction]);
@@ -27,7 +32,13 @@ export const TransactionsProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <TransactionsContext.Provider
-      value={{ transactions, addTransaction, removeTransaction }}
+      value={{
+        transactions,
+        addTransaction,
+        removeTransaction,
+        showAddTransactionModal,
+        setShowAddTransactionModal,
+      }}
     >
       {children}
     </TransactionsContext.Provider>

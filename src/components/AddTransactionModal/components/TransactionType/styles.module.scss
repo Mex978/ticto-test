@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  gap: 1rem;
+}
+
+.radioButton {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--input-border-color);
+  background-color: transparent;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--text-title-color);
+  font-size: var(--font-size-sm);
+}
+
+.radioButton svg {
+  width: 28px;
+  height: 28px;
+}
+
+.depositIcon {
+  color: var(--success-color);
+}
+
+.withdrawIcon {
+  color: var(--error-color);
+}
+
+.selected {
+  background-color: rgba(64, 26, 155, 0.1);
+  border-color: var(--primary-color-light);
+}
+
+@media (min-width: 768px) {
+  .radioButton {
+    flex-direction: row;
+  }
+}

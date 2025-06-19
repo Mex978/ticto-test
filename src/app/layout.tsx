@@ -26,7 +26,7 @@ export default function RootLayout({
   const fontFamilys = [poppins.style, roboto.style];
 
   return (
-    <html lang="pt_BR" className={fontFamilys.join(", ")}>
+    <html lang="pt-BR" className={fontFamilys.join(", ")}>
       <body>
         <Providers>{children}</Providers>
       </body>

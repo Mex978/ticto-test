@@ -1,3 +1,4 @@
+"use client";
 import { TableSession } from "@/components/TableSession";
 import { ResultSession } from "@/components/ResultSession";
 import { IHomeLayout } from "../data";

@@ -70,6 +70,7 @@ export const ResultSession: React.FC<IResultSessionLayout> = () => {
           {items.map((_, i) => (
             <button
               key={i}
+              aria-label={`Ir para o slide ${i + 1}`}
               onClick={() => instanceRef.current?.moveToIdx(i)}
               className={`${styles.dot} ${
                 currentSlide === i ? styles.active : ""

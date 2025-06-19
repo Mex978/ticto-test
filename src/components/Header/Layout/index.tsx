@@ -9,7 +9,9 @@ import { IHeaderLayout } from "../data";
 import styles from "./styles.module.scss";
 import { useMediaQuery } from "react-responsive";
 
-export const Header: React.FC<IHeaderLayout> = () => {
+export const Header: React.FC<IHeaderLayout> = ({
+  setShowAddTransactionModal,
+}) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
@@ -23,7 +25,15 @@ export const Header: React.FC<IHeaderLayout> = () => {
             height={isMobile ? 85 : 50}
           />
         </div>
-        <button>NOVA TRANSAÇÃO</button>
+        <button
+          type="button"
+          aria-label="Nova transação"
+          onClick={() => {
+            setShowAddTransactionModal(true);
+          }}
+        >
+          NOVA TRANSAÇÃO
+        </button>
       </div>
     </header>
   );

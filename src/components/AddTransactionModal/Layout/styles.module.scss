@@ -1,0 +1,65 @@
+.overlay {
+  background-color: var(--modal-overlay-color);
+  display: flex;
+  z-index: 9999;
+}
+
+.modal {
+  z-index: 9999;
+  background-color: var(--modal-background-color);
+  align-self: center;
+  justify-self: center;
+  // max-width: 400px;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.closeButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-title-color);
+  margin-top: 1.5rem;
+}
+
+.form {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  width: 100%;
+  height: 56px;
+  background-color: var(--primary-color-light);
+  color: var(--text-white-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-md);
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 0.5rem;
+
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+}
