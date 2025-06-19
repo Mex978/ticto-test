@@ -1,7 +1,13 @@
-export default function Home() {
+"use client";
+
+import { Header } from "@/components/Header";
+import { Home } from "@/components/Home";
+
+export default function MainPage() {
   return (
     <main>
-      <div>Hello world!</div>
+      <Header />
+      <Home />
     </main>
   );
 }

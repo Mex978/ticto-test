@@ -1,0 +1,21 @@
+@import "./variables.scss";
+@import "./breakpoints.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    color: #333;
+    font-family: "Roboto", "Poppins", sans-serif;
+}
+
+button {
+    &:hover {
+        opacity: 0.7;
+        cursor: pointer;
+    }
+}
