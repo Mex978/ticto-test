@@ -4,6 +4,7 @@ export interface ITableSession {}
 
 export interface ITableSessionLayout extends ITableSession {
   items: Transaction[];
+  isLoading: boolean;
   showDeleteTransactionModal: boolean;
-  setShowDeleteTransactionModal: (show: boolean) => void;
+  handleChangeDeleteTransactionModal: (show: boolean, id?: string) => void;
 }

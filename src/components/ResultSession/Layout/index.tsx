@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
+import React, { useMemo } from "react";
 
-import { ResultCard } from "@/components/ResultCard";
 import { formatCurrency } from "@/helpers/functions/formatCurrency";
 import { FiArrowDownLeft, FiArrowUpRight } from "react-icons/fi";
 import { IResultSessionLayout } from "../data";
@@ -11,8 +10,12 @@ import { useKeenSlider } from "keen-slider/react";
 
 import { useState } from "react";
 import styles from "./styles.module.scss";
+import { ResultCard } from "../components/ResultCard";
 
-export const ResultSession: React.FC<IResultSessionLayout> = () => {
+export const ResultSession: React.FC<IResultSessionLayout> = ({
+  items,
+  isLoading,
+}) => {
   const [canScroll, setCanScroll] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -30,24 +33,6 @@ export const ResultSession: React.FC<IResultSessionLayout> = () => {
     },
   });
 
-  const items = [
-    {
-      title: "Entradas",
-      icon: <FiArrowDownLeft size={28} color="#06D6A2" />,
-      value: formatCurrency(15292895200),
-    },
-    {
-      title: "Saídas",
-      icon: <FiArrowUpRight size={28} color="#DB3766" />,
-      value: formatCurrency(15292895200),
-    },
-    {
-      title: "Saldo Total",
-      icon: <FiArrowDownLeft size={28} color="#06D6A2" />,
-      value: formatCurrency(5000),
-    },
-  ];
-
   return (
     <div className={styles.wrapper}>
       <div ref={sliderRef} className={`keen-slider ${styles.carousel}`}>
@@ -60,6 +45,7 @@ export const ResultSession: React.FC<IResultSessionLayout> = () => {
               title={item.title}
               icon={item.icon}
               value={item.value}
+              isLoading={isLoading}
             />
           </div>
         ))}

@@ -16,8 +16,11 @@ const transactionSchema = z.object({
 });
 
 export const AddTransactionModal: React.FC<IAddTransactionModal> = (props) => {
-  const { showAddTransactionModal, setShowAddTransactionModal } =
-    useContext(TransactionsContext);
+  const {
+    showAddTransactionModal,
+    handleChangeAddTransactionModal,
+    addTransaction,
+  } = useContext(TransactionsContext);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,17 +36,21 @@ export const AddTransactionModal: React.FC<IAddTransactionModal> = (props) => {
 
   const onSubmit = async (data: IAddTransactionModalFormData) => {
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    // await fetch('/api/contato', { method: 'POST', body: JSON.stringify(data) })
+    await addTransaction({
+      description: data.name,
+      value: data.value,
+      type: data.type,
+      category: data.category,
+    });
     setIsLoading(false);
     reset();
-    setShowAddTransactionModal(false);
+    handleChangeAddTransactionModal(false);
   };
 
   const layoutProps = {
     ...props,
     isOpen: showAddTransactionModal,
-    onClose: () => setShowAddTransactionModal(false),
+    onClose: () => handleChangeAddTransactionModal(false),
     control,
     isLoading,
     errors,

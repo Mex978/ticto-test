@@ -8,6 +8,28 @@
   overflow-y: auto;
 }
 
+.wrapperLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.wrapperEmpty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  p {
+    color: var(--text-caption-color);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-regular);
+  }
+}
+
 .headerMobile {
   display: flex;
   width: 100%;
@@ -24,13 +46,23 @@
   display: flex;
   gap: 1rem;
   width: 100%;
+  padding: 0 1rem;
 
   li {
+    flex: 2;
+    flex-shrink: 0;
+    min-width: 240px;
+    min-width: 150px;
     list-style: none;
+    word-break: break-all;
     width: 100%;
     color: var(--text-caption-color);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-regular);
+  }
+
+  li:nth-child(2) {
+    flex: 1;
   }
 }
 
@@ -108,9 +140,11 @@
 
   p,
   strong {
-    width: 100%;
+    flex: 2;
+    min-width: 150px;
     color: var(--text-body-color);
     font-size: var(--font-size-sm);
+    word-break: break-all;
 
     &.deposit {
       color: var(--success-color);
@@ -119,6 +153,14 @@
     &.withdraw {
       color: var(--error-color);
     }
+  }
+
+  // p:nth-child(1) {
+  //   flex: 3;
+  // }
+
+  strong:nth-child(2) {
+    flex: 1;
   }
 
   button {

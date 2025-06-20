@@ -9,8 +9,8 @@ import { FiX } from "react-icons/fi";
 import { Controller } from "react-hook-form";
 import { formatCurrency } from "@/helpers/functions/formatCurrency";
 import { TransactionTypeSelector } from "../components/TransactionType";
-import { CgSpinner } from "react-icons/cg";
 import { useEffect } from "react";
+import { Loader } from "@/components/Loader";
 
 export const AddTransactionModal: React.FC<IAddTransactionModalLayout> = ({
   isOpen,
@@ -65,7 +65,7 @@ export const AddTransactionModal: React.FC<IAddTransactionModalLayout> = ({
                 const numericStr = formatted.replace(/[^\d]/g, "");
                 const trimmed = numericStr.slice(0, 15);
 
-                const number = Number(trimmed) / 100;
+                const number = Number(trimmed);
                 return isNaN(number) ? 0 : number;
               };
 
@@ -103,7 +103,7 @@ export const AddTransactionModal: React.FC<IAddTransactionModalLayout> = ({
             disabled={isLoading || !isValid}
             aria-label="Cadastrar transação"
           >
-            {isLoading && <CgSpinner size={24} className={"spinner"} />}
+            {isLoading && <Loader size={24} />}
             CADASTRAR
           </button>
         </form>

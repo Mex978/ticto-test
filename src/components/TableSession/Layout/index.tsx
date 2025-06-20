@@ -8,20 +8,38 @@ import { Transaction } from "@/types";
 import { FiTrash } from "react-icons/fi";
 import { useMediaQuery } from "react-responsive";
 import styles from "./styles.module.scss";
+import { Loader } from "@/components/Loader";
 
 interface ITableItem {
   item: Transaction;
-  setShowDeleteTransactionModal: (show: boolean) => void;
+  handleChangeDeleteTransactionModal: (show: boolean, id?: string) => void;
 }
 
 export const TableSession: React.FC<ITableSessionLayout> = ({
   items,
-  setShowDeleteTransactionModal,
+  isLoading,
+  handleChangeDeleteTransactionModal,
 }) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const TableHeaderResult = isMobile ? TableHeaderMobile : TableHeaderDesktop;
   const TableItemResult = isMobile ? TableItemMobile : TableItemDesktop;
+
+  if (isLoading) {
+    return (
+      <div className={styles.wrapperLoader}>
+        <Loader size={32} />
+      </div>
+    );
+  }
+
+  if (!items || items.length === 0) {
+    return (
+      <div className={styles.wrapperEmpty}>
+        <p>Nenhuma transação encontrada</p>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
@@ -32,7 +50,9 @@ export const TableSession: React.FC<ITableSessionLayout> = ({
           <TableItemResult
             key={item.id}
             item={item}
-            setShowDeleteTransactionModal={setShowDeleteTransactionModal}
+            handleChangeDeleteTransactionModal={
+              handleChangeDeleteTransactionModal
+            }
           />
         ))}
       </ul>
@@ -41,14 +61,18 @@ export const TableSession: React.FC<ITableSessionLayout> = ({
 };
 
 const TableHeaderMobile: React.FC<{ items: Transaction[] }> = ({ items }) => {
+  if (!items || items.length === 0) return null;
+
   return (
     <p className={styles.headerMobile}>
-      <span>({items.length})</span> transações
+      <span>({items.length})</span> transaç{items.length === 1 ? "ão" : "ões"}
     </p>
   );
 };
 
-const TableHeaderDesktop: React.FC = () => {
+const TableHeaderDesktop: React.FC<{ items: Transaction[] }> = ({ items }) => {
+  if (!items || items.length === 0) return null;
+
   return (
     <ul className={styles.header}>
       <li>Descrição</li>
@@ -61,7 +85,7 @@ const TableHeaderDesktop: React.FC = () => {
 
 const TableItemMobile: React.FC<ITableItem> = ({
   item,
-  setShowDeleteTransactionModal,
+  handleChangeDeleteTransactionModal,
 }) => {
   return (
     <li className={styles.itemMobile} key={item.id}>
@@ -76,7 +100,7 @@ const TableItemMobile: React.FC<ITableItem> = ({
       <div>
         <button
           aria-label="Excluir transação"
-          onClick={() => setShowDeleteTransactionModal(true)}
+          onClick={() => handleChangeDeleteTransactionModal(true, item.id)}
         >
           <FiTrash size={16} color="#DB3766" />
         </button>
@@ -88,7 +112,7 @@ const TableItemMobile: React.FC<ITableItem> = ({
 
 const TableItemDesktop: React.FC<ITableItem> = ({
   item,
-  setShowDeleteTransactionModal,
+  handleChangeDeleteTransactionModal,
 }) => {
   return (
     <li className={styles.itemDesktop} key={item.id}>
@@ -101,7 +125,7 @@ const TableItemDesktop: React.FC<ITableItem> = ({
       <button
         className={styles.delete}
         aria-label="Excluir transação"
-        onClick={() => setShowDeleteTransactionModal(true)}
+        onClick={() => handleChangeDeleteTransactionModal(true, item.id)}
       >
         <FiTrash size={16} color="#DB3766" />
       </button>

@@ -4,11 +4,11 @@ import { Header as Layout } from "./Layout";
 import TransactionsContext from "@/context/TransactionContext";
 
 export const Header: React.FC<IHeader> = (props) => {
-  const { setShowAddTransactionModal } = useContext(TransactionsContext);
+  const { handleChangeAddTransactionModal } = useContext(TransactionsContext);
 
   const layoutProps = {
     ...props,
-    setShowAddTransactionModal,
+    handleChangeAddTransactionModal,
   };
 
   return <Layout {...layoutProps} />;

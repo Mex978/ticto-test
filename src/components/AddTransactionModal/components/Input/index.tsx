@@ -6,10 +6,10 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   error?: string;
 };
 
-export function Input({ error, ...rest }: InputProps) {
+export function Input({ error, value, ...rest }: InputProps) {
   return (
     <div className={styles.wrapper}>
-      <input className={styles.field} {...rest} />
+      <input className={styles.field} value={value ?? ""} {...rest} />
       {error && <p className={styles.error}>{error}</p>}
     </div>
   );

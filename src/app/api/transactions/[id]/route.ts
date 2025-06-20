@@ -1,11 +1,12 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { remove } from "@/lib/transactions";
 
 export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const success = remove(params.id);
+  const { id } = await params;
+  const success = remove(id);
 
   if (!success) {
     return NextResponse.json(

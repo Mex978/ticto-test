@@ -5,12 +5,12 @@ import { IDeleteTransactionModalLayout } from "../data";
 
 import styles from "./styles.module.scss";
 import { FiX } from "react-icons/fi";
-import { CgSpinner } from "react-icons/cg";
 import { useEffect } from "react";
+import { Loader } from "@/components/Loader";
 
 export const DeleteTransactionModal: React.FC<
   IDeleteTransactionModalLayout
-> = ({ isOpen, onClose, isLoading }) => {
+> = ({ isOpen, onClose, isLoading, handleDeleteTransaction }) => {
   useEffect(() => {
     Modal.setAppElement("body");
   }, []);
@@ -50,11 +50,11 @@ export const DeleteTransactionModal: React.FC<
           </button>
           <button
             className={styles.delete}
-            onClick={onClose}
+            onClick={handleDeleteTransaction}
             disabled={isLoading}
             aria-label="Deletar transação"
           >
-            {isLoading && <CgSpinner size={24} className={"spinner"} />}
+            {isLoading && <Loader size={24} />}
             EXCLUIR
           </button>
         </div>
