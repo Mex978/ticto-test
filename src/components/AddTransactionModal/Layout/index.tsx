@@ -8,7 +8,7 @@ import { Input } from "../components/Input";
 import { FiX } from "react-icons/fi";
 import { Controller } from "react-hook-form";
 import { formatCurrency } from "@/helpers/functions/formatCurrency";
-import { TransactionType } from "../components/TransactionType";
+import { TransactionTypeSelector } from "../components/TransactionType";
 import { CgSpinner } from "react-icons/cg";
 import { useEffect } from "react";
 
@@ -17,6 +17,8 @@ export const AddTransactionModal: React.FC<IAddTransactionModalLayout> = ({
   onClose,
   control,
   isLoading,
+  errors,
+  isValid,
   handleSubmit,
 }) => {
   useEffect(() => {
@@ -42,38 +44,69 @@ export const AddTransactionModal: React.FC<IAddTransactionModalLayout> = ({
 
         <h1 className={styles.title}>Cadastrar Transação</h1>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <Input placeholder="Nome" name="name" />
           <Controller
-            name="value"
+            name="name"
             control={control}
             render={({ field }) => (
               <Input
                 {...field}
-                onChange={(e) => {
-                  const formatted = formatCurrency(e.target.value);
-                  field.onChange(formatted);
-                }}
-                placeholder="Preço"
+                placeholder="Nome"
+                error={errors.name?.message}
               />
             )}
           />
-          <TransactionType
-            onChange={(value) => {
-              console.log(value);
+          <Controller
+            name="value"
+            control={control}
+            render={({ field }) => {
+              const { value, onChange, ...rest } = field;
+
+              const parseValue = (formatted: string) => {
+                const numericStr = formatted.replace(/[^\d]/g, "");
+                const trimmed = numericStr.slice(0, 15);
+
+                const number = Number(trimmed) / 100;
+                return isNaN(number) ? 0 : number;
+              };
+
+              return (
+                <Input
+                  {...rest}
+                  value={formatCurrency(value?.toString() ?? "")}
+                  onChange={(e) => onChange(parseValue(e.target.value))}
+                  placeholder="Preço"
+                  error={errors.value?.message}
+                />
+              );
             }}
           />
+          <Controller
+            name="type"
+            control={control}
+            render={({ field }) => <TransactionTypeSelector {...field} />}
+          />
 
-          <Input placeholder="Categoria" name="category" />
+          <Controller
+            name="category"
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                placeholder="Categoria"
+                error={errors.category?.message}
+              />
+            )}
+          />
+          <button
+            type="submit"
+            className={styles.button}
+            disabled={isLoading || !isValid}
+            aria-label="Cadastrar transação"
+          >
+            {isLoading && <CgSpinner size={24} className={"spinner"} />}
+            CADASTRAR
+          </button>
         </form>
-        <button
-          className={styles.button}
-          onClick={onClose}
-          disabled={isLoading}
-          aria-label="Cadastrar transação"
-        >
-          {isLoading && <CgSpinner size={24} className={"spinner"} />}
-          CADASTRAR
-        </button>
       </div>
     </Modal>
   );

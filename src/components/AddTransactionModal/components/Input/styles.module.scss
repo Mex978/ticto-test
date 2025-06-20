@@ -23,3 +23,11 @@
     opacity: 0.45;
   }
 }
+
+.error {
+  color: var(--error-color);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
+}

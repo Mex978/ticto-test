@@ -4,5 +4,7 @@ export type Transaction = {
   value: number;
   category: string;
   createdAt: string;
-  type: "deposit" | "withdraw";
+  type: TransactionType;
 };
+
+export type TransactionType = "deposit" | "withdraw";

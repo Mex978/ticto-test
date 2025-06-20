@@ -1,15 +1,16 @@
 "use client";
 import { useState } from "react";
 import { ArrowCircleUp, ArrowCircleDown } from "phosphor-react";
+import { TransactionType } from "@/types/Transaction";
 
 import styles from "./styles.module.scss";
 
-export function TransactionType({
+export function TransactionTypeSelector({
   onChange,
 }: {
-  onChange: (type: "withdraw" | "deposit") => void;
+  onChange: (type: TransactionType) => void;
 }) {
-  const [type, setType] = useState<"withdraw" | "deposit" | null>(null);
+  const [type, setType] = useState<TransactionType | null>(null);
 
   return (
     <div className={styles.container}>

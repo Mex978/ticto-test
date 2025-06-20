@@ -4,6 +4,8 @@ import { Transaction } from "@/types";
 import { ITableSession } from "./data";
 
 import { TableSession as Layout } from "./Layout";
+import { useContext } from "react";
+import TransactionsContext from "@/context/TransactionContext";
 
 // TODO: Remove this mock data
 const items = Array.from(
@@ -20,9 +22,14 @@ const items = Array.from(
 );
 
 export const TableSession: React.FC<ITableSession> = (props) => {
+  const { showDeleteTransactionModal, setShowDeleteTransactionModal } =
+    useContext(TransactionsContext);
+
   const layoutProps = {
     ...props,
     items,
+    showDeleteTransactionModal,
+    setShowDeleteTransactionModal,
   };
 
   return <Layout {...layoutProps} />;

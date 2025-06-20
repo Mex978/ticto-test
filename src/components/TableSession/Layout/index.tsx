@@ -9,7 +9,15 @@ import { FiTrash } from "react-icons/fi";
 import { useMediaQuery } from "react-responsive";
 import styles from "./styles.module.scss";
 
-export const TableSession: React.FC<ITableSessionLayout> = ({ items }) => {
+interface ITableItem {
+  item: Transaction;
+  setShowDeleteTransactionModal: (show: boolean) => void;
+}
+
+export const TableSession: React.FC<ITableSessionLayout> = ({
+  items,
+  setShowDeleteTransactionModal,
+}) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const TableHeaderResult = isMobile ? TableHeaderMobile : TableHeaderDesktop;
@@ -21,7 +29,11 @@ export const TableSession: React.FC<ITableSessionLayout> = ({ items }) => {
 
       <ul className={styles.content}>
         {items.map((item) => (
-          <TableItemResult key={item.id} {...item} />
+          <TableItemResult
+            key={item.id}
+            item={item}
+            setShowDeleteTransactionModal={setShowDeleteTransactionModal}
+          />
         ))}
       </ul>
     </div>
@@ -47,7 +59,10 @@ const TableHeaderDesktop: React.FC = () => {
   );
 };
 
-const TableItemMobile: React.FC<Transaction> = (item) => {
+const TableItemMobile: React.FC<ITableItem> = ({
+  item,
+  setShowDeleteTransactionModal,
+}) => {
   return (
     <li className={styles.itemMobile} key={item.id}>
       <div>
@@ -59,7 +74,10 @@ const TableItemMobile: React.FC<Transaction> = (item) => {
       </div>
 
       <div>
-        <button aria-label="Excluir transação">
+        <button
+          aria-label="Excluir transação"
+          onClick={() => setShowDeleteTransactionModal(true)}
+        >
           <FiTrash size={16} color="#DB3766" />
         </button>
         <span>{formatDate(item.createdAt)}</span>
@@ -68,7 +86,10 @@ const TableItemMobile: React.FC<Transaction> = (item) => {
   );
 };
 
-const TableItemDesktop: React.FC<Transaction> = (item) => {
+const TableItemDesktop: React.FC<ITableItem> = ({
+  item,
+  setShowDeleteTransactionModal,
+}) => {
   return (
     <li className={styles.itemDesktop} key={item.id}>
       <p>{item.description}</p>
@@ -77,7 +98,11 @@ const TableItemDesktop: React.FC<Transaction> = (item) => {
       </strong>
       <p>{item.category}</p>
       <p>{formatDate(item.createdAt)}</p>
-      <button className={styles.delete} aria-label="Excluir transação">
+      <button
+        className={styles.delete}
+        aria-label="Excluir transação"
+        onClick={() => setShowDeleteTransactionModal(true)}
+      >
         <FiTrash size={16} color="#DB3766" />
       </button>
     </li>
