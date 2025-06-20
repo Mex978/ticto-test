@@ -1,12 +1,6 @@
 import { api } from "@/lib/api";
 import { Transaction } from "@/types";
-
-export interface ICreateTransactionRequest
-  extends Omit<Transaction, "id" | "createdAt"> {}
-
-interface ICreateTransactionResponse {
-  data: Transaction;
-}
+import { ICreateTransactionRequest, ICreateTransactionResponse } from "./types";
 
 export async function createTransaction(
   data: ICreateTransactionRequest

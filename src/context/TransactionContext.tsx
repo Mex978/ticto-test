@@ -1,28 +1,19 @@
 "use client";
 
-import { createContext, ReactNode, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 
 import { deleteTransaction, getTransactions } from "@/services/Transactions";
-import {
-  createTransaction,
-  ICreateTransactionRequest,
-} from "@/services/Transactions/createTransaction";
+import { createTransaction } from "@/services/Transactions/createTransaction";
+import { ICreateTransactionRequest } from "@/services/Transactions/types";
 import { Transaction } from "@/types";
 import { toast } from "react-toastify";
-
-type TransactionsContextType = {
-  transactions: Transaction[];
-  showAddTransactionModal: boolean;
-  showDeleteTransactionModal: boolean;
-  isLoading: boolean;
-  idToDelete: string;
-  setIdToDelete: (id: string) => void;
-  addTransaction: (transaction: ICreateTransactionRequest) => Promise<void>;
-  removeTransaction: (id: string) => Promise<void>;
-  handleChangeAddTransactionModal: (show: boolean) => void;
-  handleChangeDeleteTransactionModal: (show: boolean, id?: string) => void;
-  fetchTransactions: () => Promise<void>;
-};
+import { TransactionsContextType } from "./types";
 
 const TransactionsContext = createContext<TransactionsContextType>({
   transactions: [],
@@ -46,28 +37,33 @@ export const TransactionsProvider = ({ children }: { children: ReactNode }) => {
     useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  async function fetchTransactions() {
+  const fetchTransactions = useCallback(async () => {
     try {
       setIsLoading(true);
+
       const transactions = await getTransactions();
       setTransactions(transactions);
+
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
     }
-  }
+  }, []);
 
-  async function addTransaction(transaction: ICreateTransactionRequest) {
-    try {
-      const newTransaction = await createTransaction(transaction);
-      setTransactions((prev) => [...prev, newTransaction]);
-      toast.success("Transação adicionada com sucesso");
-    } catch (error) {
-      toast.error("Erro ao adicionar transação");
-    }
-  }
+  const addTransaction = useCallback(
+    async (transaction: ICreateTransactionRequest) => {
+      try {
+        const newTransaction = await createTransaction(transaction);
+        setTransactions((prev) => [...prev, newTransaction]);
+        toast.success("Transação adicionada com sucesso");
+      } catch (error) {
+        toast.error("Erro ao adicionar transação");
+      }
+    },
+    []
+  );
 
-  async function removeTransaction(id: string) {
+  const removeTransaction = useCallback(async (id: string) => {
     try {
       await deleteTransaction(id);
       setTransactions((prev) => prev.filter((t) => t.id !== id));
@@ -75,38 +71,56 @@ export const TransactionsProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       toast.error("Erro ao remover transação");
     }
-  }
+  }, []);
 
-  function handleChangeAddTransactionModal(show: boolean) {
+  const handleChangeAddTransactionModal = useCallback((show: boolean) => {
     setShowAddTransactionModal(show);
-  }
+  }, []);
 
-  function handleChangeDeleteTransactionModal(show: boolean, id?: string) {
-    setShowDeleteTransactionModal(show);
+  const handleChangeDeleteTransactionModal = useCallback(
+    (show: boolean, id?: string) => {
+      setShowDeleteTransactionModal(show);
 
-    if (show) {
-      setIdToDelete(id ?? "");
-    } else {
-      setIdToDelete("");
-    }
-  }
+      if (show) {
+        setIdToDelete(id ?? "");
+      } else {
+        setIdToDelete("");
+      }
+    },
+    []
+  );
+
+  const contextValue: TransactionsContextType = useMemo(
+    () => ({
+      transactions,
+      addTransaction,
+      idToDelete,
+      setIdToDelete,
+      removeTransaction,
+      showAddTransactionModal,
+      showDeleteTransactionModal,
+      handleChangeAddTransactionModal,
+      handleChangeDeleteTransactionModal,
+      fetchTransactions,
+      isLoading,
+    }),
+    [
+      transactions,
+      addTransaction,
+      idToDelete,
+      setIdToDelete,
+      removeTransaction,
+      showAddTransactionModal,
+      showDeleteTransactionModal,
+      handleChangeAddTransactionModal,
+      handleChangeDeleteTransactionModal,
+      fetchTransactions,
+      isLoading,
+    ]
+  );
 
   return (
-    <TransactionsContext.Provider
-      value={{
-        transactions,
-        addTransaction,
-        idToDelete,
-        setIdToDelete,
-        removeTransaction,
-        showAddTransactionModal,
-        showDeleteTransactionModal,
-        handleChangeAddTransactionModal,
-        handleChangeDeleteTransactionModal,
-        fetchTransactions,
-        isLoading,
-      }}
-    >
+    <TransactionsContext.Provider value={contextValue}>
       {children}
     </TransactionsContext.Provider>
   );

@@ -1,9 +1,5 @@
 import { api } from "@/lib/api";
-import { Transaction } from "@/types";
-
-interface IGetTransactionsResponse {
-  data: Transaction[];
-}
+import { IGetTransactionsResponse } from "./types";
 
 export async function getTransactions() {
   try {
