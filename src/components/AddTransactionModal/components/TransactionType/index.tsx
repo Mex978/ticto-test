@@ -12,6 +12,11 @@ export function TransactionTypeSelector({
 }) {
   const [type, setType] = useState<TransactionType | null>(null);
 
+  function handleTypeChange(type: TransactionType) {
+    setType(type);
+    onChange(type);
+  }
+
   return (
     <div className={styles.container}>
       <button
@@ -20,10 +25,7 @@ export function TransactionTypeSelector({
         className={`${styles.radioButton} ${
           type === "deposit" ? styles.selected : ""
         }`}
-        onClick={() => {
-          setType("deposit");
-          onChange("deposit");
-        }}
+        onClick={() => handleTypeChange("deposit")}
       >
         <ArrowCircleDown className={styles.depositIcon} />
         Entrada
@@ -35,10 +37,7 @@ export function TransactionTypeSelector({
         className={`${styles.radioButton} ${
           type === "withdraw" ? styles.selected : ""
         }`}
-        onClick={() => {
-          setType("withdraw");
-          onChange("withdraw");
-        }}
+        onClick={() => handleTypeChange("withdraw")}
       >
         <ArrowCircleUp className={styles.withdrawIcon} />
         Saída

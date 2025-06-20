@@ -13,7 +13,6 @@
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
     "@sentry/nextjs": "^9.30.0",
-    "axios": "^1.10.0",
     "keen-slider": "^6.8.6",
     "next": "15.3.4",
     "phosphor-react": "^1.4.1",

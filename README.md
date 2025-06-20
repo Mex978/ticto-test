@@ -12,7 +12,6 @@ This project was developed using the following technologies:
 - [Keen Slider](https://keen-slider.io/) - Library for creating carousels
 - [React Icons](https://react-icons.github.io/react-icons/) - Icon library
 - [React Hook Form](https://react-hook-form.com/) - Library for handling forms with high performance and easy validation integration
-- [Axios](https://axios-http.com/) - Promise-based HTTP client for asynchronous requests
 - [Sentry](https://sentry.io/) - Error monitoring and performance platform
 - [Zod](https://zod.dev/) - TypeScript-first schema validation library
 - [React Toastify](https://fkhadra.github.io/react-toastify/) - Library for displaying elegant toasts and notifications

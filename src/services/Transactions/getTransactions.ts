@@ -7,8 +7,10 @@ interface IGetTransactionsResponse {
 
 export async function getTransactions() {
   try {
-    const res = await api.get<IGetTransactionsResponse>("/transactions");
-    return Promise.resolve(res.data.data);
+    const res = await api<IGetTransactionsResponse>("/transactions", {
+      method: "GET",
+    });
+    return Promise.resolve(res.data);
   } catch (error) {
     return Promise.reject(error);
   }
