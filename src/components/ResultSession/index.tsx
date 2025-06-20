@@ -1,10 +1,10 @@
 import TransactionsContext from "@/context/TransactionContext";
 import { IResultSession } from "./data";
 
-import { ResultSession as Layout } from "./Layout";
-import { useContext, useMemo } from "react";
 import { formatCurrency } from "@/helpers/functions/formatCurrency";
+import { useContext, useMemo } from "react";
 import { FiArrowDownLeft, FiArrowUpRight } from "react-icons/fi";
+import { ResultSession as Layout } from "./Layout";
 
 export const ResultSession: React.FC<IResultSession> = (props) => {
   const { transactions, isLoading } = useContext(TransactionsContext);
@@ -28,12 +28,12 @@ export const ResultSession: React.FC<IResultSession> = (props) => {
   const items = [
     {
       title: "Entradas",
-      icon: <FiArrowDownLeft size={28} color="#06D6A2" />,
+      icon: <FiArrowDownLeft size={40} color="#06D6A2" />,
       value: formatCurrency(totalDeposit),
     },
     {
       title: "Saídas",
-      icon: <FiArrowUpRight size={28} color="#DB3766" />,
+      icon: <FiArrowUpRight size={40} color="#DB3766" />,
       value: formatCurrency(totalWithdraw),
     },
     {

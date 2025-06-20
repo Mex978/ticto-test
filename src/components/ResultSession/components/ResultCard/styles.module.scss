@@ -21,7 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   color: var(--text-title-color-light);
 
   &.success {
@@ -40,7 +40,7 @@
 }
 
 .value {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-xxl);
   font-weight: var(--font-weight-medium);
   font-family: var(--font-family-poppins);
   color: var(--text-title-color);
@@ -55,7 +55,7 @@
   }
 }
 
-@media (min-width: var(--breakpoint-md)) {
+@media (min-width: 768px) {
   .container {
     max-width: 388px;
   }

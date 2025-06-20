@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 };
 
 const roboto = Roboto({
-  weight: ["300", "400", "500", "700"],
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
 });
 const poppins = Poppins({
-  weight: ["300", "400", "600", "700"],
+  weight: ["400", "600", "700"],
   subsets: ["latin"],
 });
 

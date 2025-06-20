@@ -9,10 +9,13 @@ import { IAddTransactionModal, IAddTransactionModalFormData } from "./data";
 import { AddTransactionModal as Layout } from "./Layout";
 
 const transactionSchema = z.object({
-  name: z.string().min(2, "Nome muito curto"),
-  value: z.number().min(1, "Valor muito baixo"),
+  name: z.string().nonempty("Nome é obrigatório").min(2, "Nome muito curto"),
+  value: z.number().min(1, "Valor obrigatório"),
   type: z.enum(["deposit", "withdraw"]),
-  category: z.string().min(2, "Categoria muito curta"),
+  category: z
+    .string()
+    .nonempty("Categoria é obrigatória")
+    .min(2, "Categoria muito curta"),
 });
 
 export const AddTransactionModal: React.FC<IAddTransactionModal> = (props) => {

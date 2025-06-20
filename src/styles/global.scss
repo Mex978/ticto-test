@@ -1,5 +1,4 @@
 @use "./variables.scss";
-@use "./breakpoints.scss";
 
 * {
   margin: 0;
@@ -10,10 +9,11 @@
 body {
   background-color: var(--background-color);
   color: #333;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-family-roboto);
 }
 
 button {
+  font-family: var(--font-family-roboto);
   border: none;
 
   &:hover:not(:disabled) {
