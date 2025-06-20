@@ -1,34 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ticto Test
 
-## Getting Started
+A web application for personal finance management, built with modern technologies to ensure the best user experience.
 
-First, run the development server:
+## Technologies
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project was developed using the following technologies:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Next.js 15](https://nextjs.org/) - Production-focused React framework
+- [TypeScript](https://www.typescriptlang.org/) - JavaScript superset with static typing
+- [SASS](https://sass-lang.com/) - CSS preprocessor
+- [Keen Slider](https://keen-slider.io/) - Library for creating carousels
+- [React Icons](https://react-icons.github.io/react-icons/) - Icon library
+- [React Hook Form](https://react-hook-form.com/) - Library for handling forms with high performance and easy validation integration
+- [Axios](https://axios-http.com/) - Promise-based HTTP client for asynchronous requests
+- [Sentry](https://sentry.io/) - Error monitoring and performance platform
+- [Zod](https://zod.dev/) - TypeScript-first schema validation library
+- [React Toastify](https://fkhadra.github.io/react-toastify/) - Library for displaying elegant toasts and notifications
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project
 
-## Learn More
+This project is a financial control application where you can:
 
-To learn more about Next.js, take a look at the following resources:
+- Register income and expense transactions
+- View total balance
+- Track transaction history
+- See a financial summary in interactive cards
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Responsive layout
+- Card carousel with indicators
+- Automatic balance calculations
+- Intuitive and modern interface
+- Visual feedback for actions
 
-## Deploy on Vercel
+## Performance
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Core Web Vitals Metrics
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![Lighthouse Score](./docs/assets/insights.jpeg)
+
+- [Access here](https://pagespeed.web.dev/analysis/https-ticto-test-vercel-app/o0r3dzkiue?form_factor=desktop)
+
+- FCP (First Contentful Paint): 0.2s
+- LCP (Largest Contentful Paint): 0.8s
+- TBT (Total Blocking Time): 160ms
+- CLS (Cumulative Layout Shift): 0.004
+
+## Sentry Integration
+
+This project uses [Sentry](https://sentry.io/) for real-time error tracking and observability.
+
+With Sentry, we can monitor:
+
+- Runtime errors and exceptions
+- Stack traces with full context
+- User impact and session details
+- Correlation with performance metrics
+
+![Sentry Evidence](./docs/assets/sentry.jpeg)
+
+## Running the project
+
+To run the project locally, follow the steps below:
+
+1. Clone the repository:
+2. Run `yarn` to download dependencies
+3. Run `yarn dev` to start the project locally
+
+## Contributing
+
+Contributions are welcome and appreciated!
+
+If you would like to suggest improvements, report bugs, or submit a pull request, please follow these steps:
+
+1. Fork this repository
+2. Create a new branch (`git checkout -b feature/your-feature-name`)
+3. Commit your changes (`git commit -m 'feat: add new feature'`)
+4. Push to your branch (`git push origin feature/your-feature-name`)
+5. Open a Pull Request
+
+Feel free to open issues for suggestions or questions as well.
