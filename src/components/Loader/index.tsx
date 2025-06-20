@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 
 export const Loader = ({ size = 24 }: { size?: number }) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-testid="loader">
       <CgSpinner size={size} className={`spinner ${styles.spinner}`} />
     </div>
   );

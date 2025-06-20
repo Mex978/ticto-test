@@ -17,8 +17,8 @@ type TransactionsContextType = {
   isLoading: boolean;
   idToDelete: string;
   setIdToDelete: (id: string) => void;
-  addTransaction: (transaction: ICreateTransactionRequest) => void;
-  removeTransaction: (id: string) => void;
+  addTransaction: (transaction: ICreateTransactionRequest) => Promise<void>;
+  removeTransaction: (id: string) => Promise<void>;
   handleChangeAddTransactionModal: (show: boolean) => void;
   handleChangeDeleteTransactionModal: (show: boolean, id?: string) => void;
   fetchTransactions: () => Promise<void>;
@@ -31,11 +31,11 @@ const TransactionsContext = createContext<TransactionsContextType>({
   isLoading: true,
   idToDelete: "",
   setIdToDelete: () => {},
-  addTransaction: () => {},
-  removeTransaction: () => {},
+  addTransaction: () => Promise.resolve(),
+  removeTransaction: () => Promise.resolve(),
+  fetchTransactions: () => Promise.resolve(),
   handleChangeAddTransactionModal: () => {},
   handleChangeDeleteTransactionModal: () => {},
-  fetchTransactions: () => Promise.resolve(),
 });
 
 export const TransactionsProvider = ({ children }: { children: ReactNode }) => {

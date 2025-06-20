@@ -18,7 +18,10 @@ export const ResultCard: React.FC<IResultCardProps> = ({
   isLoading,
 }) => {
   return (
-    <div className={`${styles.container} ${type && styles[type]}`}>
+    <div
+      className={`${styles.container} ${type && styles[type]}`}
+      data-testid="result-card"
+    >
       <div className={`${styles.header} ${type && styles[type]}`}>
         <p>{title}</p>
         {icon && <div className={styles.icon}>{icon}</div>}

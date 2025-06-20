@@ -8,9 +8,9 @@ interface ICreateTransactionResponse {
   data: Transaction;
 }
 
-export const createTransaction = async (
+export async function createTransaction(
   data: ICreateTransactionRequest
-): Promise<Transaction> => {
+): Promise<Transaction> {
   try {
     const res = await api.post<ICreateTransactionResponse>(
       "/transactions",
@@ -20,4 +20,4 @@ export const createTransaction = async (
   } catch (error) {
     return Promise.reject(error);
   }
-};
+}
