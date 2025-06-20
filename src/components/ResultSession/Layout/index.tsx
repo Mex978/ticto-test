@@ -46,6 +46,7 @@ export const ResultSession: React.FC<IResultSessionLayout> = ({
               icon={item.icon}
               value={item.value}
               isLoading={isLoading}
+              type={item.type}
             />
           </div>
         ))}

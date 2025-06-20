@@ -38,8 +38,8 @@ export const ResultSession: React.FC<IResultSession> = (props) => {
     },
     {
       title: "Saldo Total",
-      icon: <FiArrowDownLeft size={28} color="#06D6A2" />,
       value: formatCurrency(totalBalance),
+      type: totalBalance >= 0 ? ("success" as const) : ("error" as const),
     },
   ];
 
