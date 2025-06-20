@@ -60,6 +60,11 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-regular);
   }
+  li:nth-child(1) {
+    flex: 2.5;
+    margin-left: -1rem;
+    margin-right: 1rem;
+  }
 
   li:nth-child(2) {
     flex: 1;
@@ -155,9 +160,9 @@
     }
   }
 
-  // p:nth-child(1) {
-  //   flex: 3;
-  // }
+  p:nth-child(1) {
+    flex: 2.5;
+  }
 
   strong:nth-child(2) {
     flex: 1;

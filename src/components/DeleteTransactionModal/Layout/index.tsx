@@ -1,12 +1,12 @@
 "use client";
 
+import { Loader } from "@/components/Loader";
+import { useEffect } from "react";
+import { FiX } from "react-icons/fi";
 import Modal from "react-modal";
 import { IDeleteTransactionModalLayout } from "../data";
 
 import styles from "./styles.module.scss";
-import { FiX } from "react-icons/fi";
-import { useEffect } from "react";
-import { Loader } from "@/components/Loader";
 
 export const DeleteTransactionModal: React.FC<
   IDeleteTransactionModalLayout

@@ -1,6 +1,5 @@
-"use client";
-import { TableSession } from "@/components/TableSession";
 import { ResultSession } from "@/components/ResultSession";
+import { TableSession } from "@/components/TableSession";
 import { IHomeLayout } from "../data";
 
 import styles from "./styles.module.scss";

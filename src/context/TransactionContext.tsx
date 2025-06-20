@@ -1,14 +1,14 @@
 "use client";
 
-import React, { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 
-import { Transaction } from "@/types";
+import { deleteTransaction, getTransactions } from "@/services/Transactions";
 import {
   createTransaction,
   ICreateTransactionRequest,
 } from "@/services/Transactions/createTransaction";
+import { Transaction } from "@/types";
 import { toast } from "react-toastify";
-import { deleteTransaction, getTransactions } from "@/services/Transactions";
 
 type TransactionsContextType = {
   transactions: Transaction[];

@@ -1,14 +1,14 @@
 "use client";
 
+import { Loader } from "@/components/Loader";
 import { formatCurrency } from "@/helpers/functions/formatCurrency";
-import { ITableSessionLayout } from "../data";
-
 import { formatDate } from "@/helpers/functions/formatDate";
 import { Transaction } from "@/types";
 import { FiTrash } from "react-icons/fi";
 import { useMediaQuery } from "react-responsive";
+import { ITableSessionLayout } from "../data";
+
 import styles from "./styles.module.scss";
-import { Loader } from "@/components/Loader";
 
 interface ITableItem {
   item: Transaction;

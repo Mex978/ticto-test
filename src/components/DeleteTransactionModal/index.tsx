@@ -1,9 +1,9 @@
 "use client";
 
+import TransactionsContext from "@/context/TransactionContext";
+import { useContext, useState } from "react";
 import { DeleteTransactionModal as Layout } from "./Layout";
 import { IDeleteTransactionModal } from "./data";
-import { useContext, useState } from "react";
-import TransactionsContext from "@/context/TransactionContext";
 
 export const DeleteTransactionModal: React.FC<IDeleteTransactionModal> = (
   props

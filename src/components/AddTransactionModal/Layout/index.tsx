@@ -1,16 +1,16 @@
 "use client";
 
+import { Loader } from "@/components/Loader";
+import { formatCurrency } from "@/helpers/functions/formatCurrency";
+import { useEffect } from "react";
+import { Controller } from "react-hook-form";
+import { FiX } from "react-icons/fi";
 import Modal from "react-modal";
+import { Input } from "../components/Input";
+import { TransactionTypeSelector } from "../components/TransactionType";
 import { IAddTransactionModalLayout } from "../data";
 
 import styles from "./styles.module.scss";
-import { Input } from "../components/Input";
-import { FiX } from "react-icons/fi";
-import { Controller } from "react-hook-form";
-import { formatCurrency } from "@/helpers/functions/formatCurrency";
-import { TransactionTypeSelector } from "../components/TransactionType";
-import { useEffect } from "react";
-import { Loader } from "@/components/Loader";
 
 export const AddTransactionModal: React.FC<IAddTransactionModalLayout> = ({
   isOpen,

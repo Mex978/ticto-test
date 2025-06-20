@@ -1,7 +1,7 @@
 "use client";
-import { useState } from "react";
-import { ArrowCircleUp, ArrowCircleDown } from "phosphor-react";
 import { TransactionType } from "@/types/Transaction";
+import { ArrowCircleDown, ArrowCircleUp } from "phosphor-react";
+import { useState } from "react";
 
 import styles from "./styles.module.scss";
 

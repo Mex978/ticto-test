@@ -1,16 +1,13 @@
 "use client";
-import React, { useMemo } from "react";
 
-import { formatCurrency } from "@/helpers/functions/formatCurrency";
-import { FiArrowDownLeft, FiArrowUpRight } from "react-icons/fi";
+import React, { useEffect, useState } from "react";
+
+import { useKeenSlider } from "keen-slider/react";
+import { ResultCard } from "../components/ResultCard";
 import { IResultSessionLayout } from "../data";
 
 import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react";
-
-import { useState } from "react";
 import styles from "./styles.module.scss";
-import { ResultCard } from "../components/ResultCard";
 
 export const ResultSession: React.FC<IResultSessionLayout> = ({
   items,
@@ -32,6 +29,10 @@ export const ResultSession: React.FC<IResultSessionLayout> = ({
       setCanScroll(slider.track.details.maxIdx > 0);
     },
   });
+
+  useEffect(() => {
+    instanceRef.current?.update();
+  }, [items.length]);
 
   return (
     <div className={styles.wrapper}>

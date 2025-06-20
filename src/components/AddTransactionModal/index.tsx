@@ -1,12 +1,12 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { IAddTransactionModal, IAddTransactionModalFormData } from "./data";
-import { AddTransactionModal as Layout } from "./Layout";
-import { z } from "zod";
+import TransactionsContext from "@/context/TransactionContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext, useState } from "react";
-import TransactionsContext from "@/context/TransactionContext";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { IAddTransactionModal, IAddTransactionModalFormData } from "./data";
+import { AddTransactionModal as Layout } from "./Layout";
 
 const transactionSchema = z.object({
   name: z.string().min(2, "Nome muito curto"),

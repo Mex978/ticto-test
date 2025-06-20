@@ -1,11 +1,7 @@
-"use client";
-
-import { Transaction } from "@/types";
-import { ITableSession } from "./data";
-
-import { TableSession as Layout } from "./Layout";
-import { useContext } from "react";
 import TransactionsContext from "@/context/TransactionContext";
+import { useContext } from "react";
+import { ITableSession } from "./data";
+import { TableSession as Layout } from "./Layout";
 
 export const TableSession: React.FC<ITableSession> = (props) => {
   const {
