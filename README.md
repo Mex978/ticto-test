@@ -44,7 +44,7 @@ This project is a financial control application where you can:
 - FCP (First Contentful Paint): 0.2s
 - LCP (Largest Contentful Paint): 0.7s
 - TBT (Total Blocking Time): 110ms
-- CLS (Cumulative Layout Shift): 0.003
+- CLS (Cumulative Layout Shift): 0.004
 
 ## Sentry Integration
 
