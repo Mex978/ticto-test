@@ -39,7 +39,7 @@ This project is a financial control application where you can:
 
 ![Lighthouse Score](./docs/assets/insights.jpeg)
 
-- [Access here](https://pagespeed.web.dev/analysis/https-ticto-test-vercel-app/ch7yjw0im2?form_factor=desktop)
+- [Access here](https://pagespeed.web.dev/analysis/https-ticto-test-vercel-app/14iuh5z2ak?form_factor=desktop)
 
 - FCP (First Contentful Paint): 0.2s
 - LCP (Largest Contentful Paint): 0.7s
